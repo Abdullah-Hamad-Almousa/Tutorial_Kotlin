@@ -19,11 +19,9 @@ fun main(args: Array<String>){
 
     print("Enter your birthday: ");
 
-    val birthday = readLine()?.toIntOrNull() ?: 1;
+    println(getFortuneCookie(getBirthday()));
 
-    val messageOfTheDay = getFortuneCookie(birthday);
-
-    println("Your message of the day is: $messageOfTheDay")
+    swim(50, speed = "slow");
 
 }
 
@@ -206,8 +204,7 @@ fun randomDay(): String {
 fun feedTheFish(){
 
     val day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
-
-    val tureDay = when (day){
+    val trueDay = when (day){
 
         1 -> "Sunday"
         2 -> "Monday"
@@ -220,27 +217,72 @@ fun feedTheFish(){
 
     }
 
-    val food = "Pellets";
-    println("Today is $tureDay and the fish eat ${ if (tureDay == "Tuesday") food else "Daphnia"}");
-
-    val randomDay = randomDay()
-    println("Today is $tureDay and the fish eat ${ if (randomDay == "Tuesday") food else "Daphnia"}");
+    val food = fishfood(trueDay);
+    println("Today is $trueDay and the fish eat ${ if (trueDay == "Tuesday") food else "Daphnia"}");
+    shouldChangeWater(trueDay, 20, 50);
+    shouldChangeWater(trueDay);
+    shouldChangeWater(trueDay, dirty = 70);
+    if (shouldChangeWater(trueDay)){
+        println("Change the water today");
+    }
 
 }
 
-fun getFortuneCookie(birthday: Int) : String{
+fun fishfood(day : String) : String {
 
-    val messageOfTheDay = listOf(
-        "You will have a great day!",
-        "Things will go well for you today.",
+    return when (day){
+
+        "Sunday" -> "flask";
+        "Monday" -> "pellets";
+        "Tuesday" -> "redworms";
+        "Wednesday" -> "granules";
+        "Thursday" -> "mosquitoes";
+        "Friday" -> "lettuce";
+        "Saturday" -> "plankton";
+        else -> "fasting";
+
+    }
+
+}
+
+fun getFortuneCookie(birthday: Int): String {
+    val specialMessages = when {
+        birthday in 28..31 -> "You will have a great day!"
+        birthday in 1..7 -> "Things will go well for you today."
+        else -> null
+    }
+
+    // not null will do this
+    specialMessages?.let { return it }
+
+    // null will do this
+    val messages = listOf(
         "Enjoy a wonderful day of success.",
         "Be humble and all will turn out well.",
         "Today is a good day for exercising restraint.",
         "Take it easy and enjoy life!",
         "Treasure your friends because they are your greatest fortune."
-    );
+    )
 
-    val index = birthday % messageOfTheDay.size
-    return messageOfTheDay[index]
+    val index = birthday % messages.size
+    return messages[index]
+}
 
+fun getBirthday() : Int{
+
+    val birthday = readLine()?.toIntOrNull() ?: 1;
+
+    return birthday;
+}
+
+fun swim(time: Int, speed: String = "Fast"){
+
+    println("swiming $speed / $time s")
+
+}
+
+fun shouldChangeWater(
+    day: String, temp: Int = 22, dirty: Int = 20
+) : Boolean{
+    return true;
 }
