@@ -13,8 +13,8 @@ fun main(args: Array<String>){
     val answear = checkFit(tankSize, currentFish, fishSize, hasDecorations, addFish, sizeFish)
     val totalUsed = (currentFish * fishSize) + (addFish * sizeFish)
     if (answear==true){
-        println("It will fit the size of the tank $tankSize, and number of fishes ${currentFish + addFish}, Total space has been taken" +
-                " $totalUsed, is it Deocoratited $hasDecorations");
+        println("It will fit the size of the tank $tankSize Liters, and number of fishes ${currentFish + addFish}, Total space has been taken" +
+                " $totalUsed cm, is it Deocoratited $hasDecorations");
     }else {
         println("Forget that");
     }
