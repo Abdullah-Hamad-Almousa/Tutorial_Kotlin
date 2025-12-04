@@ -34,3 +34,5 @@ fun spicesList(){
     println(spices.filter { it[0] == 'c' });
 
 }
+
+val rollDice = {(1..12).random()};
