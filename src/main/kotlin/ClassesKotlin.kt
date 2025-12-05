@@ -1,5 +1,7 @@
 package com.MysticByte
 
+import kotlin.math.PI
+
 
 /*
 
@@ -14,14 +16,14 @@ val volume : Int
 
 */
 
-class ClassesKotlin(var length: Int = 100, var width: Int = 20, var height: Int = 40){
+open class ClassesKotlin(var length: Int = 100, var width: Int = 20, var height: Int = 40){
 
-    var volume : Int
+    open var volume : Int
         get() = width * length * height / 1000
         set(value){height = (value * 1000) / (width * length)
     }
 
-    var water = volume * 0.9;
+    open var water = volume * 0.9;
 
     constructor(numFish: Int): this() {
 
@@ -29,6 +31,18 @@ class ClassesKotlin(var length: Int = 100, var width: Int = 20, var height: Int 
         val tank: Double = water + water * 0.1;
         height = (tank / (length * width)).toInt();
 
+    }
+
+}
+
+class towerTank(): ClassesKotlin() {
+
+    override var water = volume * 0.8;
+
+    override var volume: Int
+        get() = (width * height * length / 1000 * PI).toInt();
+        set(value){
+            height = (value * 1000) / (width * length);
     }
 
 }
