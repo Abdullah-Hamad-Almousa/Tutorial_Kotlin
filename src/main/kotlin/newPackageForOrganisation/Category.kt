@@ -32,14 +32,6 @@ fun main(args: Array<String>) {
     Dog().makeSound();
 
     println("Java Version: ${System.getProperty("java.version")}");
-    println("Java Runtime: ${System.getProperty("java.runtime.version")}");
-
     println("Kotlin Version: ${KotlinVersion.CURRENT}");
-
-    // Java
-    println("Java Version: ${System.getProperty("java.version")}")
-
-    // Kotlin
-    println("Kotlin Version: ${KotlinVersion.CURRENT}")
 
 }
