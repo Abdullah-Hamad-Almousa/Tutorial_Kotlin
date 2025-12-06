@@ -6,11 +6,11 @@ interface AquariumAction{
 
 }
 
-interface FishAction{
+/*interface FishAction{
 
     fun eat()
 
-}
+}*/
 
 abstract class AquariumFish: FishAction{
 
