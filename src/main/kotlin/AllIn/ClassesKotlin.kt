@@ -1,4 +1,4 @@
-package com.MysticByte
+package com.MysticByte.AllIn
 
 import kotlin.math.PI
 
